@@ -53,6 +53,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('getDataEscritor/{id}','EscritorController@getData');
     Route::get('eliminarEscritor/{id}','EscritorController@delete');
     Route::post('updateEscritor','EscritorController@update');
+
+    Route::get('verPedidos','PedidosController@ver');
+    Route::get('verPedido/{id}','PedidosController@verDetalle');
+    Route::post('enviarPedido','PedidosController@enviarPedido');
+    Route::post('confirmarPago','PedidosController@confirmarPago');
 });
 
 

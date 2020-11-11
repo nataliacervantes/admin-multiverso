@@ -81,18 +81,11 @@
           </ul>
         </li>
         <li class="sub-menu">
-          <a href="javascript:;" class="">
+          <a href="{{ url('verPedidos')}}" class="">
               <i class="icon_profile"></i>
-              <span>Perfiles</span>
+              <span>Pedidos</span>
               <span class="menu-arrow arrow_carrot-right"></span>
           </a>
-          <ul class="sub">
-            <li><a class="" href="profile.html">Profile</a></li>
-            <li><a class="" href="login.html"><span>Login Page</span></a></li>
-            <li><a class="" href="contact.html"><span>Contact Page</span></a></li>
-            <li><a class="" href="blank.html">Blank Page</a></li>
-            <li><a class="" href="404.html">404 Error</a></li>
-          </ul>
         </li>
       </ul>
       <!-- sidebar menu end-->
