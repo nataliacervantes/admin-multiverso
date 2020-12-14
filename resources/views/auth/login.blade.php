@@ -27,16 +27,16 @@
                         </span>
                     @enderror
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+            {{-- <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}> --}}
 
-                <label class="form-check-label" for="remember">
+                {{-- <label class="form-check-label" for="remember">
                     {{ __('Remember Me') }}
-                </label>
-                <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
-            </div>
+                </label> --}}
+                {{-- <span class="pull-right"> <a href="#"> Olviaste tu password?</a></span>
+            </div> --}}
             <button type="submit" class="btn btn-primary btn-lg btn-block">
-                {{ __('Login') }}
+                {{ __('Ingresar') }}
             </button>
             @if (Route::has('password.request'))
                 <a class="btn btn-info btn-lg btn-block" href="{{ route('register') }}">
@@ -44,6 +44,6 @@
                 </a>
             @endif
         </div>
-      </form>
+    </form>
 </div>
 @endsection

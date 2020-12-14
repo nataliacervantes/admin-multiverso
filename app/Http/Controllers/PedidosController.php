@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Pedidos;
+use App\BookPedido;
+use App\Libros;
+use App\Mail\ConfirmacionDeEnvio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PedidosController extends Controller
 {
@@ -25,6 +29,19 @@ class PedidosController extends Controller
         $pedido->EstatusEnvio = 'Enviado';
         $pedido->save();
 
+        $productos = BookPedido::where('pedidos_id', $pedido->id)->get();
+
+        foreach($productos as $producto){
+            // dd($producto);
+            if($producto->books_id != null){
+                $libro = Libros::find($producto->books_id);
+                $libro->Stock = $libro->Stock - $producto->Cantidad;
+                $libro->save();
+            }
+        }
+        // if($pedido){
+            Mail::to('nataliaglezcervantes@gmail.com')->send(new ConfirmacionDeEnvio($pedido));
+        // }
         return back();
     }
 
@@ -32,6 +49,7 @@ class PedidosController extends Controller
         $pedido = Pedidos::where('id',$request->idPedido)->first();
         // dd($request->idPedido);
         $pedido->EstatusPago = 'Pagado';
+        
         $pedido->save();
         return back();
     }

@@ -5,30 +5,20 @@
         <li class="active">
           <a class="" href="index.html">
               <i class="icon_house_alt"></i>
-              <span>Dashboard</span>
+              <span>Inicio</span>
           </a>
         </li>
         <li class="sub-menu">
-          <a href="javascript:;" class="">
-                        <i class="icon_book_alt"></i>
-                        <span>Autores</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-          <ul class="sub">
-          <li><a class="" href="{{ url('altaEscritor')}}">Dar de Alta</a></li>
-            <li><a class="" href="{{ url('verEscritor') }}">Ver Lista</a></li>
-          </ul>
+          <a href="{{ url('verEscritor') }}" class="">
+              <i class="icon_profile"></i>
+              <span>Autores</span>
+          </a>
         </li>
         <li class="sub-menu">
-          <a href="javascript:;" class="">
-                        <i class="icon_book_alt"></i>
-                        <span>Libros</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-          <ul class="sub">
-          <li><a class="" href="{{ url('altaLibro')}}">Dar de Alta</a></li>
-            <li><a class="" href="{{ url('verLibros') }}">Ver Lista</a></li>
-          </ul>
+          <a href="{{ url('verLibros') }}" class="">
+              <i class="icon_book_alt"></i>
+              <span>Libros</span>
+          </a>
         </li>
         <li class="sub-menu">
           <a href="javascript:;" class="">

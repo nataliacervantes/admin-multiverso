@@ -39,6 +39,21 @@
   <script src="{{asset('js/sparklines.js')}}"></script>
   <script src="{{asset('js/charts.js')}}"></script>
   <script src="{{asset('js/jquery.slimscroll.min.js')}}"></script>
+  {{-- <script src="{{asset('js/jquery.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{{asset('js/jquery.easing.min.js')}}"></script>
+
+    <!-- Custom scripts for all pages-->
+    {{-- <script src="{{asset('js/sb-admin-2.min.js')}}"></script> --}}
+
+    <!-- Page level plugins -->
+    {{-- <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('js/dataTables.bootstrap4.min.js')}}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{asset('js/datatables-demo.js')}}"></script> --}} 
   <script>
     //knob
     $(function() {

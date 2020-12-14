@@ -1,3 +1,7 @@
+@php
+use App\Pedidos;
+  $pedidos = Pedidos::where('EstatusEnvio','Pendiente')->get();
+@endphp
 <header class="header dark-bg">
     <div class="toggle-nav">
       <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
@@ -26,7 +30,7 @@
       <ul class="nav pull-right top-menu">
 
         <!-- task notificatoin start -->
-        <li id="task_notificatoin_bar" class="dropdown">
+        {{-- <li id="task_notificatoin_bar" class="dropdown">
           <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                           <i class="icon-task-l"></i>
                           <span class="badge bg-important">6</span>
@@ -108,10 +112,10 @@
               <a href="#">See All Tasks</a>
             </li>
           </ul>
-        </li>
+        </li> --}}
         <!-- task notificatoin end -->
         <!-- inbox notificatoin start-->
-        <li id="mail_notificatoin_bar" class="dropdown">
+        {{-- <li id="mail_notificatoin_bar" class="dropdown">
           <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                           <i class="icon-envelope-l"></i>
                           <span class="badge bg-important">5</span>
@@ -173,28 +177,48 @@
               <a href="#">See all messages</a>
             </li>
           </ul>
-        </li>
+        </li> --}}
         <!-- inbox notificatoin end -->
         <!-- alert notification start-->
         <li id="alert_notificatoin_bar" class="dropdown">
           <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-
-                          <i class="icon-bell-l"></i>
-                          <span class="badge bg-important">7</span>
-                      </a>
+              <i class="icon-bell-l"></i>
+              <span class="badge bg-important">{{count($pedidos)}}</span>
+          </a>
           <ul class="dropdown-menu extended notification">
             <div class="notify-arrow notify-arrow-blue"></div>
-            <li>
-              <p class="blue">You have 4 new notifications</p>
-            </li>
-            <li>
-              <a href="#">
-                                  <span class="label label-primary"><i class="icon_profile"></i></span>
-                                  Friend Request
-                                  <span class="small italic pull-right">5 mins</span>
-                              </a>
-            </li>
-            <li>
+              <li>
+                <p class="blue">Tienes {{count($pedidos)}} notificaciones</p>
+              </li>
+            @foreach ($pedidos as $pedido)
+              @if ($pedido->EstatusPago == 'Pagado' && $pedido->Metodo == 'PayPal' && $pedido->EstatusEnvio == 'Pendiente' || 
+                    $pedido->EstatusPago == 'Pagado' && $pedido->Metodo == 'MercadoPago' && $pedido->EstatusEnvio == 'Pendiente' )
+                    <li>
+                      <a href="{{ url('verPedido/'.$pedido->id)}}">
+                        <span class="label label-success"><i class="icon_like"></i></span>
+                          {{$pedido->Nombre}} {{$pedido->Apellido}} te ha comprado un libro
+                        <span class="small italic pull-right">5 mins</span>
+                      </a>
+                    </li>
+              @elseif($pedido->Metodo == 'Depósito' && $pedido->FichaPago == null && $pedido->EstatusEnvio == 'Pendiente' )
+                <li>
+                  <a href="{{ url('verPedido/'.$pedido->id)}}">
+                    <span class="label label-primary"><i class="icon_info"></i></span>
+                      {{$pedido->Nombre}} {{$pedido->Apellido}} te ha pedido un libro
+                    <span class="small italic pull-right">5 mins</span>
+                  </a>
+                </li>
+              @elseif($pedido->Metodo == 'Depósito' && $pedido->FichaPago != null && $pedido->EstatusEnvio == 'Pendiente' )
+                <li>
+                  <a href="{{ url('verPedido/'.$pedido->id)}}">
+                    <span class="label label-warning"><i class="icon_check_alt"></i></span>
+                      {{$pedido->Nombre}} {{$pedido->Apellido}} ha subido su ficha de pago
+                    <span class="small italic pull-right">5 mins</span>
+                  </a>
+                </li>
+              @endif
+            @endforeach
+            {{-- <li>
               <a href="#">
                                   <span class="label label-warning"><i class="icon_pin"></i></span>
                                   John location.
@@ -210,13 +234,13 @@
             </li>
             <li>
               <a href="#">
-                                  <span class="label label-success"><i class="icon_like"></i></span>
+                                  <span class="label label-success"><i class=""></i></span>
                                   Mick appreciated your work.
                                   <span class="small italic pull-right"> Today</span>
                               </a>
             </li>
-            <li>
-              <a href="#">See all notifications</a>
+            <li> --}}
+              <a href="{{ url('verPedidos')}}">Ver todos</a>
             </li>
           </ul>
         </li>

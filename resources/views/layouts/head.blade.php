@@ -31,6 +31,11 @@
   <link href="{{asset('css/style-responsive.css')}}" rel="stylesheet" />
   <link href="{{asset('css/xcharts.min.css')}}" rel=" stylesheet">
   <link href="{{asset('css/jquery-ui-1.10.4.min.css')}}" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="{{asset('css/sb-admin-2.min.css" rel="stylesheet')}}">
+
+  <!-- Custom styles for this page -->
+  <link href="{{asset('css/dataTables.bootstrap4.min.css" rel="stylesheet')}}">
   <!-- =======================================================
     Theme Name: NiceAdmin
     Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/

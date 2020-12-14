@@ -17,6 +17,11 @@ class EscritorController extends Controller
     }
 
     public function store(Request $request){
+        $validate = $request->validate([
+            'Nombre' => 'required',
+            'Descripcion' => 'required',
+        ]);
+
         $escritor = Escritor::create($request->all());
 
         $escritores = Escritor::all();
@@ -25,10 +30,10 @@ class EscritorController extends Controller
 
     public function delete($id){
         $escritor = Escritor::find($id);
-        $libros = Libros::where('autores_id',$escritor)-get();
+        $libros = Libros::where('autores_id',$escritor)->get();
 
         foreach($libros as $libro){
-            $libros->delete();
+            $libro->delete();
         }
         $escritor->delete();
 

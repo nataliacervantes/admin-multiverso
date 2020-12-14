@@ -12,23 +12,30 @@
                 <table class="table table-striped table-advance table-hover">
                   <tbody>
                     <tr>
-                      <th><i class="icon_profile"></i> Título</th>
+                      <th><i class="icon_profile"></i> Cupón</th>
                       <th><i class="icon_mail_alt"></i> Fecha de Inicio</th>
                       <th><i class="icon_calendar"></i> Fecha Final</th>
                       <th><i class="icon_mail_alt"></i> Tipo de Desc</th>
+                      <th><i class="icon_mail_alt"></i> Cantidad Máx.</th>
                       <th><i class="icon_profile"></i> Porcentaje</th>
                       <th><i class="icon_pin_alt"></i> Dinero</th>
-                      <th><i class="icon_mobile"></i> Sin Envío</th>
+                      <th><i class="icon_mobile"></i> Acivo en correo</th>
+                      <th><i class="icon_mobile"></i> Opciones</th>
                     </tr>
                     @foreach ($promociones as $promocion)
                         <tr>
-                            <td>{{$promocion->Titulo}}</td>
+                            <td>{{$promocion->Cupon}}</td>
                             <td>{{$promocion->FechaI}}</td>
                             <td>{{$promocion->FechaF}}</td>
                             <td>{{$promocion->Tipo}}</td>
+                            <td>{{$promocion->Limite}}</td>
                             <td>{{$promocion->Porcentaje}}</td>
                             <td>{{$promocion->Dinero}}</td>
-                            <td> </td>
+                            @if($promocion->Correo == 1)
+                              <td>Si</td>
+                            @else 
+                              <td>No</td> 
+                            @endif
                             <td>
                                 <div class="btn-group">
                                 <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="{{$promocion->id}}"><i class="icon_plus_alt2"></i></button>
@@ -57,40 +64,45 @@
                 {!! Form::open(['url'=>'updatePromocion']) !!}
                     <div class="modal-body">
                       <div class="form-group">
-                        {!! Form::label('Titulo','Título de la promoción', ['control-label']) !!}
+                        {!! Form::label('Cupon','Cupón de la promoción', ['control-label','required']) !!}
                         
-                          {!! Form::text('Titulo', '', ['class'=>'form-control']) !!}
+                          {!! Form::text('Cupon', '', ['class'=>'form-control']) !!}
 
                     </div>
                       <div class="form-group">
                         {!! Form::label('FechaI','Fecha de inicio', [' control-label']) !!}
                         
-                          {!! Form::date('FechaI','',['class'=>'form-control']) !!}
+                          {!! Form::date('FechaI','',['class'=>'form-control','required']) !!}
 
                     </div>
                       <div class="form-group">
                         {!! Form::label('FechaF','Fecha fin', [' control-label']) !!}
                         
-                          {!! Form::date('FechaF','',['class'=>'form-control']) !!}
+                          {!! Form::date('FechaF','',['class'=>'form-control','required']) !!}
 
                     </div>
                       <div class="form-group">
                         {!! Form::label('Tipo','Tipo de Promoción', [' control-label']) !!}
-                        
-                          {!! Form::select('Tipo', $tipos,'', ['class'=>'form-control','id'=>'selectTipo']) !!}
+                          {!! Form::select('Tipo', $tipos,'', ['class'=>'form-control','id'=>'selectTipo','required']) !!}
 
                     </div>
+                    <div class="form-group">
+                      {!! Form::label('Limite','Limite de la Promoción', [' control-label']) !!}
+                      {!! Form::text('Limite', '', ['class'=>'form-control','id'=>'Limite','required']) !!}
+
+                  </div>
                       <div class="form-group" id="inputPorcentaje">
                         {!! Form::label('Porcentaje','Porcentaje', [' control-label']) !!}
-                      
-                          {!! Form::text('Porcentaje','',['class'=>'form-control']) !!}
+                        {!! Form::text('Porcentaje','',['class'=>'form-control']) !!}
 
                     </div>
                       <div class="form-group" id="inputDinero">
                         {!! Form::label('Dinero','Dinero', [' control-label']) !!}
-                      
-                          {!! Form::text('Dinero', '', ['class'=>'form-control']) !!}
-
+                        {!! Form::text('Dinero', '', ['class'=>'form-control']) !!}
+                    </div>
+                    <div class="form-group" id="inputDinero">
+                      {!! Form::label('CorreoLbl','¿Está promo estará activa en el correo electrónico?', ['control-label']) !!}
+                        {!! Form::checkbox('Correo', '1','', ['class'=>'form-control']) !!}
                     </div>
                       <input type="hidden" name="id" id="id">
                     </div>
@@ -114,13 +126,14 @@
             var value = button.data('whatever') 
             // alert(value)
             $.get('{{url("getDataPromocion")}}/'+value, function(returnData){
-                // alert(returnData)
+                // alert(returnData.Tipo)
                 $('#selecTipo').val(returnData.Tipo);
                 $('#FechaI').val(returnData.FechaI);
                 $('#FechaF').val(returnData.FechaF);
-                $('#Titulo').val(returnData.Titulo);
+                $('#Cupon').val(returnData.Cupon);
                 $('#Porcentaje').val(returnData.Porcentaje);
                 $('#Dinero').val(returnData.Dinero);
+                $('#Limite').val(returnData.Limite);
                 // $('#Hora').val(returnData.Hora);
                 // $('#Costo').val(returnData.Costo);
                 // $('#Cupo').val(returnData.Cupo);
@@ -138,13 +151,13 @@
     $('#selectTipo').on('change',function(){
         var value = $('#selectTipo').val();
         // alert(value)
-        if(value == 'Porcentaje'){
+        if(value == '1'){
           $('#inputPorcentaje').show();
           $('#inputDinero').hide();
-        }else if(value == 'Dinero'){
+        }else if(value == '2'){
           $('#inputDinero').show();
           $('#inputPorcentaje').hide();
-        }else if(value == 'Sin Costo de Envío'){
+        }else if(value == '3'){
           $('#inputPorcentaje').hide();
           $('#inputDinero').hide();
         }

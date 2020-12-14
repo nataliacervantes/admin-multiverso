@@ -14,6 +14,10 @@
                         <h4>Datos de Envío</h4>
                     </div>
                         <div class="form-inline">
+                            {!! Form::label('FolioLbl', 'Folio',['style'=>'font-weight: 500; font-size: large; width: 120px']) !!}
+                            {!! Form::label('FolioTxt', $pedido->Folio,['style'=>'font-weight: 350; font-size: 20px']) !!}
+                        </div>
+                        <div class="form-inline">
                             {!! Form::label('NombreLbl', 'Nombre',['style'=>'font-weight: 500; font-size: large; width: 120px']) !!}
                             {!! Form::label('NombreTxt', $pedido->Nombre,['style'=>'font-weight: 350; font-size: 20px']) !!}
                         </div>
@@ -115,8 +119,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <img src="{!! url('http://127.0.0.1:8000/Clientes/'.$pedido->FichaPago) !!}" width="60%">
-                {!! Form::label('Texto', '¿Confirmar pago?', ['style'=>'font-size:20px']) !!}
+                <img src="{!! url('http://127.0.0.1:8000/Clientes/'.$pedido->FichaPago) !!}" width="60%" style="display:block;
+                margin:auto;"><br><br>
+                {!! Form::label('Texto', '¿Confirmar pago?', ['style'=>'font-size:20px; font-weight:600;']) !!}
             </div>
             <div class="modal-footer">
                 {!! Form::open(['url'=>'confirmarPago']) !!}

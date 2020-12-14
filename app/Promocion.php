@@ -9,8 +9,8 @@ class Promocion extends Model
     protected $table = 'promociones';
 
     public static $Tipos = [
-        'Porcentaje' => 'Porcentaje',
-        'Dinero' => 'Dinero',
-        'Sin Costo de Envío' => 'Sin Costo de Envío',
+        '1' => 'Porcentaje',
+        '2' => 'Dinero',
+        '3' => 'Sin Costo de Envío',
     ];
 }

@@ -4,11 +4,11 @@
 <section id="main-content">
     <section class="wrapper">
         <div class="row">
-            <div class="col-lg-12">
-              <section class="panel">
+            <div class="col-lg-12 table-responsive">
+              {{-- <section class="panel">
                 <header class="panel-heading">
                   Lista de Libros
-                </header>
+                </header> --}}
                 <table class="table table-striped table-advance table-hover">
                   <tbody>
                     <tr>
@@ -19,6 +19,7 @@
                       <th><i class="icon_pin_alt"></i> Descripción</th>
                       <th><i class="icon_mobile"></i> Portada</th>
                       <th><i class="icon_mobile"></i> Contraportada</th>
+                      <th><i class="icon_mobile"></i> Opciones</th>
                     </tr>
                     @foreach ($libros as $libro)
                         <tr>
@@ -46,7 +47,7 @@
                     @endforeach
                   </tbody>
                 </table>
-              </section>
+              {{-- </section> --}}
             </div>
           </div>
           <!-- page end-->

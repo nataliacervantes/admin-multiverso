@@ -22,9 +22,9 @@
             <div class="panel-body">
                 {!! Form::open(['url'=>'guardarPromocion', 'class'=>'form-horizontal']) !!}
                   <div class="form-group">
-                    {!! Form::label('Titulo','Título de la promoción', ['class'=>'col-sm-2 control-label']) !!}
+                    {!! Form::label('Cupon','Título de la promoción', ['class'=>'col-sm-2 control-label']) !!}
                     <div class="col-sm-10">
-                      {!! Form::text('Titulo', '', ['class'=>'form-control']) !!}
+                      {!! Form::text('Cupon', '', ['class'=>'form-control']) !!}
                     </div>
                   </div>
                   <div class="form-group">
@@ -38,6 +38,12 @@
                     <div class="col-sm-10">
                       {!! Form::date('FechaF','',['class'=>'form-control']) !!}
                     </div>
+                  </div>
+                  <div class="form-group">
+                    {!! Form::label('Limite','Limite de la Promoción', ['class'=>'col-sm-2 control-label']) !!}
+                      <div class="col-sm-10">
+                        {!! Form::text('Limite', '', ['class'=>'form-control']) !!}
+                      </div>
                   </div>
                   <div class="form-group">
                     {!! Form::label('Tipo','Tipo de Promoción', ['class'=>'col-sm-2 control-label']) !!}
@@ -55,6 +61,12 @@
                     {!! Form::label('Dinero','Dinero', ['class'=>'col-sm-2 control-label']) !!}
                     <div class="col-sm-10">
                       {!! Form::text('Dinero', '', ['class'=>'form-control']) !!}
+                    </div>
+                  </div>
+                  <div class="form-group" id="inputDinero">
+                    {!! Form::label('CorreoLbl','¿Está promo estará activa en el correo electrónico?', ['class'=>'col-sm-2 control-label']) !!}
+                    <div class="col-sm-10">
+                      {!! Form::checkbox('Correo', '1','', ['class'=>'form-control']) !!}
                     </div>
                   </div>
                   {{-- <div class="form-group">
@@ -99,13 +111,13 @@
      $('#selectTipo').on('change',function(){
         var value = $('#selectTipo').val();
         // alert(value)
-        if(value == 'Porcentaje'){
+        if(value == '1'){
           $('#inputPorcentaje').show();
           $('#inputDinero').hide();
-        }else if(value == 'Dinero'){
+        }else if(value == '2'){
           $('#inputDinero').show();
           $('#inputPorcentaje').hide();
-        }else if(value == 'Sin Costo de Envío'){
+        }else if(value == '3'){
           $('#inputPorcentaje').hide();
           $('#inputDinero').hide();
         }

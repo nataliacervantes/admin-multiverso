@@ -5,10 +5,10 @@
     <section class="wrapper">
         <div class="row">
             <div class="col-lg-12">
-              <section class="panel">
+              {{-- <section class="panel">
                 <header class="panel-heading">
                   Lista de Eventos
-                </header>
+                </header> --}}
                 <table class="table table-striped table-advance table-hover">
                   <tbody>
                     <tr>
@@ -25,6 +25,7 @@
                       <th><i class="icon_mobile"></i> Imagen</th>
                       <th><i class="icon_mobile"></i> Maps</th>
                       <th><i class="icon_pin_alt"></i> Fanpage</th>
+                      <th><i class="icon_mobile"></i> Opciones</th>
                     </tr>
                     @foreach ($eventos as $evento)
                         <tr>
@@ -51,7 +52,7 @@
                     @endforeach
                   </tbody>
                 </table>
-              </section>
+              {{-- </section> --}}
             </div>
           </div>
           <!-- page end-->

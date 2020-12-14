@@ -14,12 +14,12 @@
                     <tr>
                       <th><i class="icon_profile"></i> País</th>
                       <th><i class="icon_mail_alt"></i> Costo</th>
+                      <th><i class="icon_mobile"></i> Opciones</th>
                     </tr>
                     @foreach ($costosEnvio as $costoEnvio)
                         <tr>
                             <td>{{$costoEnvio->Pais}}</td>
                             <td>{{$costoEnvio->Costo}}</td>
-                            <td> </td>
                             <td>
                                 <div class="btn-group">
                                 <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="{{$costoEnvio->id}}"><i class="icon_plus_alt2"></i></button>
