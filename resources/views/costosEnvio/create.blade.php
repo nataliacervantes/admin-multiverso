@@ -5,11 +5,11 @@
     <section class="wrapper">
       <div class="row">
         <div class="col-lg-12">
-          <h3 class="page-header"><i class="fa fa-file-text-o"></i> Promociones</h3>
+          <h3 class="page-header"><i class="fa fa-file-text-o"></i> Costos de Envio</h3>
           <ol class="breadcrumb">
             <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
-            <li><i class="icon_document_alt"></i>Promociones</li>
-            <li><i class="fa fa-file-text-o"></i>Crear promoción</li>
+            <li><i class="icon_document_alt"></i>Costos de Envío</li>
+            <li><i class="fa fa-file-text-o"></i>Crear Costo</li>
           </ol>
         </div>
       </div>
@@ -17,7 +17,7 @@
         <div class="col-lg-12">
           <section class="panel">
             <header class="panel-heading">
-              Crear promoción
+              Crear costo
             </header>
             <div class="panel-body">
                 {!! Form::open(['url'=>'guardarCostoEnvio', 'class'=>'form-horizontal']) !!}

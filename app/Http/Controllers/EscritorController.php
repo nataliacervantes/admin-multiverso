@@ -9,6 +9,7 @@ class EscritorController extends Controller
 {
     public function view(){
         $escritores = Escritor::all();
+
         return view('escritores.list', compact('escritores'));
     }
 
@@ -30,8 +31,8 @@ class EscritorController extends Controller
 
     public function delete($id){
         $escritor = Escritor::find($id);
-        $libros = Libros::where('autores_id',$escritor)->get();
-
+        $libros = Libros::where('autores_id',$id)->get();
+        // dd($libros);
         foreach($libros as $libro){
             $libro->delete();
         }

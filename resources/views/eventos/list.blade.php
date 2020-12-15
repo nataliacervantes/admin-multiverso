@@ -2,67 +2,101 @@
 
 @section('content')
 <section id="main-content">
-    <section class="wrapper">
-        <div class="row">
-            <div class="col-lg-12">
-              {{-- <section class="panel">
-                <header class="panel-heading">
-                  Lista de Eventos
-                </header> --}}
-                <table class="table table-striped table-advance table-hover">
-                  <tbody>
-                    <tr>
-                      <th><i class="icon_profile"></i> Evento</th>
-                      <th><i class="icon_profile"></i> Lugar</th>
-                      <th><i class="icon_mail_alt"></i> Domicilio</th>
-                      <th><i class="icon_calendar"></i> Fecha</th>
-                      <th><i class="icon_mail_alt"></i> Hora</th>
-                      <th><i class="icon_pin_alt"></i> Costo</th>
-                      <th><i class="icon_mobile"></i> Cupo</th>
-                      <th><i class="icon_mobile"></i> Ciudad</th>
-                      <th><i class="icon_pin_alt"></i> Estado</th>
-                      <th><i class="icon_pin_alt"></i> Video</th>
-                      <th><i class="icon_mobile"></i> Imagen</th>
-                      <th><i class="icon_mobile"></i> Maps</th>
-                      <th><i class="icon_pin_alt"></i> Fanpage</th>
-                      <th><i class="icon_mobile"></i> Opciones</th>
-                    </tr>
-                    @foreach ($eventos as $evento)
-                        <tr>
-                            <td>{{$evento->Evento}}</td>
-                            <td>{{$evento->Lugar}}</td>
-                            <td>{{$evento->Domicilio}}</td>
-                            <td>{{$evento->Fecha}}</td>
-                            <td>{{$evento->Hora}}</td>
-                            <td>{{$evento->Costo}}</td>
-                            <td>{{$evento->Cupo}}</td>
-                            <td>{{$evento->Ciudad}}</td>
-                            <td>{{$evento->Estado}}</td>
-                            <td>{{$evento->Video}}</td>
-                            <td>{{$evento->Imagen}}</td>
-                            <td>{{$evento->Maps}}</td>
-                            <td>{{$evento->Fanpage}}</td>
-                            <td>
-                                <div class="btn-group">
-                                <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="{{$evento->id}}"><i class="icon_plus_alt2"></i></button>
-                                <a class="btn btn-danger" href="{{ url('eliminarEvento/'.$evento->id) }}"><i class="icon_close_alt2"></i></a>
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
-                  </tbody>
-                </table>
-              {{-- </section> --}}
+  <section class="wrapper">
+      <div class="row">
+          <div class="col-lg-12">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h3 class="page-header"><i class="fa fa-file-text-o"></i> Evento</h3>
+
+                  {{-- <div> --}}
+                    {!! Form::open(['url'=>'altaEvento','method'=>'GET']) !!}
+                      <button class="btn btn-warning" style="float: right; margin-bottom: 15px">Agregar</button>
+                    {!! Form::close() !!}
+                  
+                  {{-- </div> --}}
+              </div>
+              <div class="card-body">
+                  <div class="table-responsive">
+                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                          <thead>
+                            <tr>
+                              <th><i class="icon_profile"></i> Evento</th>
+                              <th><i class="icon_profile"></i> Lugar</th>
+                              <th><i class="icon_mail_alt"></i> Domicilio</th>
+                              <th><i class="icon_calendar"></i> Fecha</th>
+                              <th><i class="icon_mail_alt"></i> Hora</th>
+                              <th><i class="icon_pin_alt"></i> Costo</th>
+                              <th><i class="icon_mobile"></i> Cupo</th>
+                              <th><i class="icon_mobile"></i> Ciudad</th>
+                              <th><i class="icon_pin_alt"></i> Estado</th>
+                              <th><i class="icon_pin_alt"></i> Video</th>
+                              <th><i class="icon_mobile"></i> Imagen</th>
+                              <th><i class="icon_mobile"></i> Maps</th>
+                              <th><i class="icon_pin_alt"></i> Fanpage</th>
+                              <th><i class="icon_mobile"></i> Opciones</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            @if($eventos != null)
+                              @foreach ($eventos as $evento)
+                                <tr>
+                                    <td>{{$evento->Evento}}</td>
+                                    <td>{{$evento->Lugar}}</td>
+                                    <td>{{$evento->Domicilio}}</td>
+                                    <td>{{$evento->Fecha}}</td>
+                                    <td>{{$evento->Hora}}</td>
+                                    <td>{{$evento->Costo}}</td>
+                                    <td>{{$evento->Cupo}}</td>
+                                    <td>{{$evento->Ciudad}}</td>
+                                    <td>{{$evento->Estado}}</td>
+                                    <td>{{$evento->Video}}</td>
+                                    <td>{{$evento->Imagen}}</td>
+                                    <td>{{$evento->Maps}}</td>
+                                    <td>{{$evento->Fanpage}}</td>
+                                    <td>
+                                        <div class="btn-group">
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="{{$evento->id}}"><i class="icon_plus_alt2"></i></button>
+                                        <a class="btn btn-danger" href="{{ url('eliminarEvento/'.$evento->id) }}"><i class="icon_close_alt2"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                              @endforeach   
+                            @else 
+                                <tr>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                </tr>
+                            @endif
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
             </div>
           </div>
-          <!-- page end-->
+        </div>
+      </div>
+    </div>
+          </div></div>
+  </section>
+</section>
 
-        <!-- Modal -->
+<!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modificar Libro</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Modificar Evento</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true"></span>
                 </button>
@@ -157,8 +191,6 @@
             </div>
             </div>
         </div>
-        </section>
-      </section>
 @endsection
 
 @section('scripts')

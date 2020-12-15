@@ -21,44 +21,22 @@
           </a>
         </li>
         <li class="sub-menu">
-          <a href="javascript:;" class="">
-                        {{-- <i class="icon_gift_alt"></i> --}}
-                        <i class="icon_ribbon_alt"></i>
-                        {{-- <i class="icon_bag_alt"></i>
-                        <i class="icon_cart_alt"></i>
-                        <i class="icon_mic_alt"></i> --}}
-                        <span>Eventos</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-          <ul class="sub">
-            <li><a class="" href="{{ url('altaEvento')}}">Crear Alta</a></li>
-            <li><a class="" href="{{ url('verEventos')}}">Ver Lista</a></li>
-            {{-- <li><a class="" href="grids.html">Grids</a></li> --}}
-          </ul>
+          <a href="{{ url('verEventos')}}" class="">
+              <i class="icon_ribbon_alt"></i>
+              <span>Eventos</span>
+          </a>
         </li>
         <li class="sub-menu">
-          <a href="javascript:;" class="">
+          <a href="{{ url('verPromocion')}}" class="">
               <i class="icon_creditcard"></i>
               <span>Promociones</span>
-              <span class="menu-arrow arrow_carrot-right"></span>
           </a>
-          <ul class="sub">
-            <li><a class="" href="{{ url('altaPromocion')}}">Crear Alta</a></li>
-            <li><a class="" href="{{ url('verPromocion')}}">Ver Lista</a></li>
-            {{-- <li><a class="" href="grids.html">Grids</a></li> --}}
-          </ul>
         </li>
         <li class="sub-menu">
-          <a href="javascript:;" class="">
+          <a href="{{ url('verCostoEnvio')}}" class="">
               <i class="icon_bag_alt"></i>
               <span>Costos de Envío</span>
-              <span class="menu-arrow arrow_carrot-right"></span>
           </a>
-          <ul class="sub">
-            <li><a class="" href="{{ url('altaCostoEnvio')}}">Crear Alta</a></li>
-            <li><a class="" href="{{ url('verCostoEnvio')}}">Ver Lista</a></li>
-            {{-- <li><a class="" href="grids.html">Grids</a></li> --}}
-          </ul>
         </li>
         <li class="sub-menu">
           <a href="javascript:;" class="">
@@ -74,7 +52,7 @@
           <a href="{{ url('verPedidos')}}" class="">
               <i class="icon_profile"></i>
               <span>Pedidos</span>
-              <span class="menu-arrow arrow_carrot-right"></span>
+              {{-- <span class="menu-arrow arrow_carrot-right"></span> --}}
           </a>
         </li>
       </ul>
