@@ -21,7 +21,8 @@ class LibrosController extends Controller
         $libros->Descripcion = $request->Descripcion;
         $libros->Precio = $request->Precio;
         $libros->Stock = $request->Stock;
-       
+        $libros->Contraportada = $request->Contraportada;
+
         if($request->hasFile('Portada')){
             $var = $request->file('Portada');
             $ext = $request->file('Portada')->getClientOriginalExtension();
@@ -29,13 +30,13 @@ class LibrosController extends Controller
             $var->move('img/Portadas',$name);
             $libros->Portada = $name;
         }
-        if($request->hasFile('Contraportada')){
-            $var = $request->file('Contraportada');
-            $ext = $request->file('Contraportada')->getClientOriginalExtension();
-            $name = $request->Titulo.'Contra.'.$ext;
-            $var->move('img/Portadas',$name);
-            $libros->Contraportada = $name;
-        }
+        // if($request->hasFile('Contraportada')){
+        //     $var = $request->file('Contraportada');
+        //     $ext = $request->file('Contraportada')->getClientOriginalExtension();
+        //     $name = $request->Titulo.'Contra.'.$ext;
+        //     $var->move('img/Portadas',$name);
+        //     $libros->Contraportada = $name;
+        // }
         $libros->save();
         // dd($libros);
         $libros = Libros::all();

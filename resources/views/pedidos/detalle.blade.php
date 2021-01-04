@@ -62,25 +62,59 @@
                             {!! Form::label('InfoExtraTxt', $pedido->InfoExtra,['style'=>'font-weight: 350; font-size: 20px']) !!}
                         </div>
                 </div>
-                <div class="col-md-6 ">
-                   <div class="col-md-6">
-                        @if($pedido->EstatusPago == 'Pendiente')
-                            <h2><span class="badge badge-dark" style="background: rgb(219, 215, 215); height: 30px; font-size: 20px">{{$pedido->EstatusPago}}</span></h2>
-                        @elseif($pedido->EstatusPago == 'Pagado')
-                            <h2><span class="badge badge-dark" style="background: #000; height: 30px; font-size: 20px">{{$pedido->EstatusPago}}</span></h2>
-                            @if($pedido->EstatusEnvio == 'Pendiente')
-                                <button class="btn btn-secondary" type="button" data-id="{{$pedido->id}}" data-target="#modal-enviar" data-toggle="modal">Surtir</button>
-                            @else 
-                                <h2><span class="badge badge-dark" style="background: #000; height: 30px; font-size: 20px">{{$pedido->EstatusEnvio}}</span></h2>
+                <div class="col-md-6">
+                    <div class="col-md-12">
+                        <div class="heading_s1">
+                            <h4>Detalle del Pedido</h4>
+                        </div>
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Evento/Libro</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                @if($detalleLibros != null)
+                                    @foreach($detalleLibros as $libros)
+                                        <th scope="row">{!! Form::label('InfoExtraLbl',$libros->Cantidad,['style'=>'font-weight: 500; font-size: large;width: 120px']) !!}</th>
+                                        <td>{!! Form::label('InfoExtraTxt', $libros->books->Titulo,['style'=>'font-weight: 350; font-size: 20px']) !!}</td>
+                                    @endforeach
+                                @endif
+                              </tr>
+                              <tr>
+                                @if(count($detalleEventos) > 0)
+                                @foreach($detalleEventos as $eventos)
+                                        <th scope="row">{!! Form::label('InfoExtraLbl', $eventos->Cantidad,['style'=>'font-weight: 500; font-size: large;width: 120px']) !!}</th>
+                                        <td>{!! Form::label('InfoExtraTxt', $eventos->evento->Evento,['style'=>'font-weight: 350; font-size: 20px']) !!}</td>
+                                @endforeach
                             @endif
-                        @endif
-                   </div>
-                    <div class="col-md-6">
-                        @if($pedido->FichaPago != null)
-                            <button type="button" data-target="#modal-ficha" data-id="{{$pedido->id}}" data-toggle="modal"><img src="{!! url('http://127.0.0.1:8000/Clientes/'.$pedido->FichaPago) !!}" width="100px"></button>
-                        @endif
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                    <div class="col-md-12 ">
+                       <div class="col-md-6">
+                            @if($pedido->EstatusPago == 'Pendiente')
+                                <h2><span class="badge badge-dark" style="background: rgb(219, 215, 215); height: 30px; font-size: 20px">{{$pedido->EstatusPago}}</span></h2>
+                            @elseif($pedido->EstatusPago == 'Pagado')
+                                <h2><span class="badge badge-dark" style="background: #000; height: 30px; font-size: 20px">{{$pedido->EstatusPago}}</span></h2>
+                                @if($pedido->EstatusEnvio == 'Pendiente')
+                                    <button class="btn btn-secondary" type="button" data-id="{{$pedido->id}}" data-target="#modal-enviar" data-toggle="modal">Surtir</button>
+                                @else 
+                                    <h2><span class="badge badge-dark" style="background: #000; height: 30px; font-size: 20px">{{$pedido->EstatusEnvio}}</span></h2>
+                                @endif
+                            @endif
+                       </div>
+                        <div class="col-md-6">
+                            @if($pedido->FichaPago != null)
+                                <button type="button" data-target="#modal-ficha" data-id="{{$pedido->id}}" data-toggle="modal"><img src="{!! url('http://127.0.0.1:8000/Clientes/'.$pedido->FichaPago) !!}" width="100px"></button>
+                            @endif
+                        </div>
                     </div>
                 </div>
+               
             </section>
         </div>
     </section>

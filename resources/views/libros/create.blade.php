@@ -6,11 +6,6 @@
       <div class="row">
         <div class="col-lg-12">
           <h3 class="page-header"><i class="fa fa-file-text-o"></i> Libros</h3>
-          <ol class="breadcrumb">
-            <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
-            <li><i class="icon_document_alt"></i>Libros</li>
-            <li><i class="fa fa-file-text-o"></i>Crear libro</li>
-          </ol>
         </div>
       </div>
       <div class="row">
@@ -62,9 +57,9 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    {!! Form::label('Contraportada','Foto de la Contraportada', ['class'=>'col-sm-2 control-label']) !!}
+                    {!! Form::label('Contraportada','Video', ['class'=>'col-sm-2 control-label']) !!}
                     <div class="col-sm-10">
-                      {!! Form::file('Contraportada', ['class'=>'form-control']) !!}
+                      {!! Form::text('Contraportada','', ['class'=>'form-control']) !!}
                     </div>
                   </div>
                   <div class="form-group">

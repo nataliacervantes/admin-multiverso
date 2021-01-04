@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Pedidos;
 use App\BookPedido;
+use App\EventPedidos;
 use App\Libros;
 use App\Mail\ConfirmacionDeEnvio;
 use Illuminate\Http\Request;
@@ -17,8 +18,11 @@ class PedidosController extends Controller
 
     public function verDetalle($id){
         $pedido = Pedidos::where('id',$id)->first();
-        // dd($pedido);
-        return view('pedidos.detalle',compact('pedido'));
+        $detalleLibros = BookPedido::where('pedidos_id',$id)->get();
+        $detalleEventos = EventPedidos::where('pedidos_id',$id)->get();
+        // dd($detalleEventos->evento);
+        // dd($detalleLibros->books);
+        return view('pedidos.detalle',compact('pedido','detalleLibros','detalleEventos'));
     }
 
     public function enviarPedido(Request $request){
@@ -40,7 +44,7 @@ class PedidosController extends Controller
             }
         }
         // if($pedido){
-            Mail::to('nataliaglezcervantes@gmail.com')->send(new ConfirmacionDeEnvio($pedido));
+            Mail::to($pedido->Email)->send(new ConfirmacionDeEnvio($pedido));
         // }
         return back();
     }

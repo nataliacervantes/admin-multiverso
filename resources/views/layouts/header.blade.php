@@ -251,15 +251,15 @@ use App\Pedidos;
               <span class="profile-ava">
                   <img alt="" src="">
               </span>
-              <span class="username">José de la Serna</span>
+              <span class="username">{{ Auth::user()->name}}</span>
               <b class="caret"></b>
           </a>
           <ul class="dropdown-menu extended logout">
             <div class="log-arrow-up"></div>
             <li class="eborder-top">
-              <a href="#"><i class="icon_profile"></i> My Profile</a>
+              <a href="#"><i class="icon_profile"></i> Mi Perfil</a>
             </li>
-            <li>
+            {{-- <li>
               <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
             </li>
             <li>
@@ -267,24 +267,24 @@ use App\Pedidos;
             </li>
             <li>
               <a href="#"><i class="icon_chat_alt"></i> Chats</a>
-            </li>
+            </li> --}}
             <li>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();"><i class="icon_key_alt"></i>
-                    {{ __('Logout') }}
+                    {{ __('Salir') }}
                 </a>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
             </li>
-            <li>
+            {{-- <li>
               <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
             </li>
             <li>
               <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
-            </li>
+            </li> --}}
           </ul>
         </li>
         <!-- user login dropdown end -->
