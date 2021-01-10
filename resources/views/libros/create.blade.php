@@ -57,9 +57,9 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    {!! Form::label('Contraportada','Video', ['class'=>'col-sm-2 control-label']) !!}
+                    {!! Form::label('VideoL','Video', ['class'=>'col-sm-2 control-label']) !!}
                     <div class="col-sm-10">
-                      {!! Form::text('Contraportada','', ['class'=>'form-control']) !!}
+                      {!! Form::text('Video','', ['class'=>'form-control']) !!}
                     </div>
                   </div>
                   <div class="form-group">

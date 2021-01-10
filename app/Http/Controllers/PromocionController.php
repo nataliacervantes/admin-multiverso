@@ -28,6 +28,7 @@ class PromocionController extends Controller
         $promocion->Porcentaje = $request->Porcentaje;
         $promocion->Dinero = $request->Dinero;
         $promocion->Limite = $request->Limite;
+        
         if(!isset($request->Correo)){
             // dd($request->all());
             $promocion->Correo = 0;

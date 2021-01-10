@@ -15,14 +15,18 @@ class LibrosController extends Controller
 
     public function store(Request $request){
         $libros = new Libros();
-        // dd($request->all());
+      
+        // dd($request->Video);
         $libros->Titulo = $request->Titulo;
         $libros->autores_id = $request->Autor;
         $libros->Descripcion = $request->Descripcion;
         $libros->Precio = $request->Precio;
         $libros->Stock = $request->Stock;
-        $libros->Contraportada = $request->Contraportada;
-
+        
+        $sub = substr($request->Video,7);
+        $style = '<iframe style="position: absolute;top: 0;left: 0;bottom: 0;right: 0;width: 100%;height: 100%;border: none;" '.$sub;
+        // dd($style);
+        $libros->Video = $style;
         if($request->hasFile('Portada')){
             $var = $request->file('Portada');
             $ext = $request->file('Portada')->getClientOriginalExtension();
@@ -30,15 +34,9 @@ class LibrosController extends Controller
             $var->move('img/Portadas',$name);
             $libros->Portada = $name;
         }
-        // if($request->hasFile('Contraportada')){
-        //     $var = $request->file('Contraportada');
-        //     $ext = $request->file('Contraportada')->getClientOriginalExtension();
-        //     $name = $request->Titulo.'Contra.'.$ext;
-        //     $var->move('img/Portadas',$name);
-        //     $libros->Contraportada = $name;
-        // }
+        
         $libros->save();
-        // dd($libros);
+       
         $libros = Libros::all();
          
         return redirect('verLibros')->with(['libros'=>$libros]);
@@ -82,7 +80,8 @@ class LibrosController extends Controller
         $libros->Descripcion = $request->Descripcion;
         $libros->Precio = $request->Precio;
         $libros->Stock = $request->Stock;
-        
+        $libros->Video = $request->Video;
+
         if($request->hasFile('Portada')){
             // dd($request->Portada);
             $var = $request->file('Portada');
@@ -92,15 +91,15 @@ class LibrosController extends Controller
             $var->move('img/Portadas',$name);
             $libros->Portada = $name;
         }
-        if($request->hasFile('Contraportada')){
-            // dd($request->Contraportada);
-            $var = $request->file('Contraportada');
-            $ext = $request->file('Contraportada')->getClientOriginalExtension();
-            $name = $request->Titulo.'.'.$ext;
-            // dd($ext);
-            $var->move('img/Portadas',$name);
-            $libros->Contraportada = $name;
-        }
+        // if($request->hasFile('Contraportada')){
+        //     // dd($request->Contraportada);
+        //     $var = $request->file('Contraportada');
+        //     $ext = $request->file('Contraportada')->getClientOriginalExtension();
+        //     $name = $request->Titulo.'.'.$ext;
+        //     // dd($ext);
+        //     $var->move('img/Portadas',$name);
+        //     $libros->Contraportada = $name;
+        // }
         $libros->save();
 
         return back();

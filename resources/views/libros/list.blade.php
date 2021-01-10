@@ -52,7 +52,7 @@
                                         {{-- <img src="{!! url('getImage/'.$libro->id) !!}" width="100px"> --}}
                                         <img src="img/Portadas/{{$libro->Portada}}" width="100px">
                                     </td>
-                                    <td>{{$libro->Contraportada}}</td>
+                                    <td>{{$libro->Video}}</td>
                                     <td>
                                         <div class="btn-group">
                                         <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="{{$libro->id}}"><i class="icon_plus_alt2"></i></button>
@@ -136,6 +136,12 @@
                               {!! Form::file('Imagenes', ['class'=>'form-control']) !!}
                           {{-- </div> --}}
                       </div>
+                      <div class="form-group">
+                        {!! Form::label('Video','Video', ['class'=>' control-label']) !!}
+                        {{-- <div class="col-sm-10"> --}}
+                          {!! Form::text('Video', '', ['class'=>'form-control']) !!}
+                        {{-- </div> --}}
+                      </div>
                       <input type="hidden" name="id" id="id">
               </div>
               <div class="modal-footer">
@@ -164,6 +170,7 @@
                 $('#Descripcion').val(returnData.Descripcion);
                 $('#Precio').val(returnData.Precio);
                 $('#Stock').val(returnData.Stock);
+                $('#Video').val(returnData.Video);
                 $('#id').val(value);
             })
         })
