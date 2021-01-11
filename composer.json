@@ -16,7 +16,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.4",
         "laravelcollective/html": "^6.2",
-        "simplesoftwareio/simple-qrcode": "~4"
+        "simplesoftwareio/simple-qrcode": "^4.1"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

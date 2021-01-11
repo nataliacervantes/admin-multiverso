@@ -5,6 +5,7 @@ use App\Pedidos;
 use App\BookPedido;
 use App\EventPedidos;
 use App\Libros;
+use App\Mail\EnviarBoleto;
 use App\Mail\ConfirmacionDeEnvio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -20,9 +21,12 @@ class PedidosController extends Controller
         $pedido = Pedidos::where('id',$id)->first();
         $detalleLibros = BookPedido::where('pedidos_id',$id)->get();
         $detalleEventos = EventPedidos::where('pedidos_id',$id)->get();
-        // dd($detalleEventos->evento);
+        // dd();
+        if($pedido->Folio == 0){
+            $folio = 'no';
+        }
         // dd($detalleLibros->books);
-        return view('pedidos.detalle',compact('pedido','detalleLibros','detalleEventos'));
+        return view('pedidos.detalle',compact('pedido','detalleLibros','detalleEventos','folio'));
     }
 
     public function enviarPedido(Request $request){
@@ -52,6 +56,21 @@ class PedidosController extends Controller
     public function confirmarPago(Request $request){
         $pedido = Pedidos::where('id',$request->idPedido)->first();
         // dd($request->idPedido);
+        $evento = EventPedidos::where('pedidos_id',$pedido->id)->get();
+        $libro = BookPedido::where('pedidos_id', $pedido->id)->get();
+
+        if($evento != null && $libro != null){
+            $pedido->EstatusPago = 'Pagado';
+            // $pedido->EstatusEnvio = 'Enviado';
+            $pedido->save();
+            Mail::to($pedido->Email)->send(new EnviarBoleto($pedido));
+        }elseif($evento != null && $libro == null){
+            $pedido->EstatusPago = 'Pagado';
+            $pedido->EstatusEnvio = 'Enviado';
+            $pedido->save();
+            Mail::to($pedido->Email)->send(new EnviarBoleto($pedido));
+        }
+
         $pedido->EstatusPago = 'Pagado';
         
         $pedido->save();

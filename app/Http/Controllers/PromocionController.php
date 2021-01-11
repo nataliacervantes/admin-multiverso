@@ -19,7 +19,7 @@ class PromocionController extends Controller
     }
 
     public function store(Request $request){
-        
+        // dd($request->all());
         $promocion = new Promocion();
         $promocion->Cupon = $request->Cupon;
         $promocion->FechaI = $request->FechaI;
@@ -54,14 +54,14 @@ class PromocionController extends Controller
 
     public function update(Request $request){
         $promocion = Promocion::find($request->id);
-
+        // dd($request->all());
         $promocion->Cupon = $request->Cupon;
         $promocion->FechaI = $request->FechaI;
         $promocion->FechaF = $request->FechaF;
         $promocion->Tipo = $request->Tipo;
-        $promocion->Limite = $request->Limite;
         $promocion->Porcentaje = $request->Porcentaje;
         $promocion->Dinero = $request->Dinero;
+        $promocion->Limite = $request->Limite;
         if(!isset($request->Correo)){
             $promocion->Correo = 0;
         }else{

@@ -85,13 +85,13 @@
               <div class="form-group">
                   {!! Form::label('Pais','País', [' control-label']) !!}
                   {{-- <div class="col-sm-10"> --}}
-                    {!! Form::text('Pais', '', ['class'=>'form-control']) !!}
+                    {!! Form::text('Pais', '', ['class'=>'form-control','id'=>'Pais']) !!}
                   {{-- </div> --}}
                 </div>
                 <div class="form-group" >
                   {!! Form::label('Costo','Costo', [' control-label']) !!}
                   {{-- <div class="col-sm-10"> --}}
-                    {!! Form::text('Costo','',['class'=>'form-control']) !!}
+                    {!! Form::text('Costo','',['class'=>'form-control','id'=>'Costo']) !!}
                   {{-- </div> --}}
                 </div>
               <input type="hidden" name="id" id="id">
@@ -104,13 +104,14 @@
   </div>
   </div>
 </div>
+
 @endsection
 
 @section('scripts')
     <script>
         $('#exampleModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) 
-            // alert(value)
+            alert(value)
             var value = button.data('whatever') 
             // alert(value)
             $.get('{{url("getDataCostoEnvio")}}/'+value, function(returnData){

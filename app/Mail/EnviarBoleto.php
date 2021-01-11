@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ConfirmacionDeEnvio extends Mailable
+class EnviarBoleto extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -29,7 +29,6 @@ class ConfirmacionDeEnvio extends Mailable
      */
     public function build()
     {
-        // dd($this->msg);
-        return $this->view('mails.confirmacionEnvio');
+        return $this->view('mails.boleto_virtual', compact('msg'));
     }
 }

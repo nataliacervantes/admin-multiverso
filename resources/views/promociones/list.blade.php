@@ -37,7 +37,7 @@
                               <th><i class="icon_mail_alt"></i> Cantidad Máx.</th>
                               <th><i class="icon_profile"></i> Porcentaje</th>
                               <th><i class="icon_pin_alt"></i> Dinero</th>
-                              <th><i class="icon_mobile"></i> Acivo en correo</th>
+                              <th><i class="icon_mobile"></i> Activo en correo</th>
                               <th><i class="icon_mobile"></i> Opciones</th>
                             </tr>
                           </thead>
@@ -48,7 +48,13 @@
                                     <td>{{$promocion->Cupon}}</td>
                                     <td>{{$promocion->FechaI}}</td>
                                     <td>{{$promocion->FechaF}}</td>
-                                    <td>{{$promocion->Tipo}}</td>
+                                    @if($promocion->Tipo == 1)
+                                      <td>Porcentaje</td>
+                                    @elseif($promocion->Tipo == 2)
+                                      <td>Dinero</td>
+                                    @elseif($promocion->Tipo == 3)
+                                      <td>Sin costo de envío</td>
+                                    @endif
                                     <td>{{$promocion->Limite}}</td>
                                     <td>{{$promocion->Porcentaje}}</td>
                                     <td>{{$promocion->Dinero}}</td>
@@ -84,7 +90,6 @@
           </div></div>
   </section>
 </section>
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -100,24 +105,24 @@
             <div class="form-group">
               {!! Form::label('Cupon','Cupón de la promoción', ['control-label','required']) !!}
               
-                {!! Form::text('Cupon', '', ['class'=>'form-control']) !!}
+                {!! Form::text('Cupon', '', ['class'=>'form-control', 'id'=>'Cupon']) !!}
 
           </div>
             <div class="form-group">
               {!! Form::label('FechaI','Fecha de inicio', [' control-label']) !!}
               
-                {!! Form::date('FechaI','',['class'=>'form-control','required']) !!}
+                {!! Form::date('FechaI','',['class'=>'form-control','required', 'id'=>'FechaI']) !!}
 
           </div>
             <div class="form-group">
               {!! Form::label('FechaF','Fecha fin', [' control-label']) !!}
               
-                {!! Form::date('FechaF','',['class'=>'form-control','required']) !!}
+                {!! Form::date('FechaF','',['class'=>'form-control','required','id'=>'FechaF']) !!}
 
           </div>
             <div class="form-group">
               {!! Form::label('Tipo','Tipo de Promoción', [' control-label']) !!}
-                {!! Form::select('Tipo', $tipos,'', ['class'=>'form-control','id'=>'selectTipo','required']) !!}
+              {!! Form::select('Tipo', $tipos,'', ['class'=>'form-control','id'=>'Tipo','required']) !!}
 
           </div>
           <div class="form-group">
@@ -127,16 +132,16 @@
         </div>
             <div class="form-group" id="inputPorcentaje">
               {!! Form::label('Porcentaje','Porcentaje', [' control-label']) !!}
-              {!! Form::text('Porcentaje','',['class'=>'form-control']) !!}
+              {!! Form::text('Porcentaje','',['class'=>'form-control','id'=>'Porcentaje']) !!}
 
           </div>
             <div class="form-group" id="inputDinero">
               {!! Form::label('Dinero','Dinero', [' control-label']) !!}
-              {!! Form::text('Dinero', '', ['class'=>'form-control']) !!}
+              {!! Form::text('Dinero', '', ['class'=>'form-control','id'=>'Dinero']) !!}
           </div>
           <div class="form-group" id="inputDinero">
             {!! Form::label('CorreoLbl','¿Está promo estará activa en el correo electrónico?', ['control-label']) !!}
-              {!! Form::checkbox('Correo', '1','', ['class'=>'form-control']) !!}
+              {!! Form::checkbox('Correo', '1','', ['class'=>'form-control','id'=>'Correo']) !!}
           </div>
             <input type="hidden" name="id" id="id">
           </div>
@@ -159,18 +164,17 @@
             // alert(value)
             $.get('{{url("getDataPromocion")}}/'+value, function(returnData){
                 // alert(returnData.Tipo)
-                $('#selecTipo').val(returnData.Tipo);
+                $('#Tipo').val(returnData.Tipo);
                 $('#FechaI').val(returnData.FechaI);
                 $('#FechaF').val(returnData.FechaF);
                 $('#Cupon').val(returnData.Cupon);
                 $('#Porcentaje').val(returnData.Porcentaje);
                 $('#Dinero').val(returnData.Dinero);
                 $('#Limite').val(returnData.Limite);
-                // $('#Hora').val(returnData.Hora);
-                // $('#Costo').val(returnData.Costo);
-                // $('#Cupo').val(returnData.Cupo);
-                // $('#Estado').val(returnData.Estado);
-                // $('#Ciudad').val(returnData.Ciudad);
+                if(returnData.Correo === 1)
+                  $('#Correo').attr('checked', true);
+                else if(returnData.Correo === 0)
+                  $('#Correo').attr('checked', false);
                 $('#id').val(value);
             })
         })

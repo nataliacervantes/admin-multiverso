@@ -47,7 +47,7 @@
                               <tbody>
                                 @foreach ($pedidos as $pedido)
                                 <tr>
-                                  <td>{{$pedido->Folio}}</td>
+                                    <td>{{$pedido->Folio}}</td>
                                     <td>{{$pedido->Nombre}}</td>
                                     <td>{{$pedido->created_at}}</td>
                                     <td>{{$pedido->EstatusPago}}</td>
@@ -57,7 +57,7 @@
                                     <td>
                                         <div class="btn-group">
                                         {{-- <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="{{$pe->id}}"><i class="icon_plus_alt2"></i></button> --}}
-                                            <a class="btn btn-primary" href="{{ url('verPedido/'.$pedido->id) }}"><i class="icon_close_alt2"></i></a>
+                                            <a class="btn btn-primary" href="{{ url('verPedido/'.$pedido->id) }}"><i class="arrow_right"></i></a>
                                         </div>
                                     </td>
                                 </tr>

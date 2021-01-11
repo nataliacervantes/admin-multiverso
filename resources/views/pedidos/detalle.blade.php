@@ -15,7 +15,12 @@
                     </div>
                         <div class="form-inline">
                             {!! Form::label('FolioLbl', 'Folio',['style'=>'font-weight: 500; font-size: large; width: 120px']) !!}
-                            {!! Form::label('FolioTxt', $pedido->Folio,['style'=>'font-weight: 350; font-size: 20px']) !!}
+                            @if (isset($folio) && $folio == 'no')
+                                {!! Form::label('no', '"0"', ['style'=>'font-weight: 350; font-size: 20px']) !!}
+                            @else 
+                                {!! Form::label('no', $pedido->Folio, ['style'=>'font-weight: 350; font-size: 20px']) !!}
+                            @endif
+                            {{-- {!! Form::label('FolioTxt',$folio,['style'=>'font-weight: 350; font-size: 20px']) !!} --}}
                         </div>
                         <div class="form-inline">
                             {!! Form::label('NombreLbl', 'Nombre',['style'=>'font-weight: 500; font-size: large; width: 120px']) !!}
@@ -59,7 +64,11 @@
                         </div>
                         <div class="form-inline">
                             {!! Form::label('InfoExtraLbl', 'InfoExtra',['style'=>'font-weight: 500; font-size: large;width: 120px']) !!}
-                            {!! Form::label('InfoExtraTxt', $pedido->InfoExtra,['style'=>'font-weight: 350; font-size: 20px']) !!}
+                            @if($pedido->InfoExtra == null)
+                                {!! Form::label('InfoExtraTxt', 'NA',['style'=>'font-weight: 350; font-size: 20px']) !!}
+                            @else
+                                {!! Form::label('InfoExtraTxt', $pedido->InfoExtra,['style'=>'font-weight: 350; font-size: 20px']) !!}
+                            @endif
                         </div>
                 </div>
                 <div class="col-md-6">
