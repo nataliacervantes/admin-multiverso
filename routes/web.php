@@ -54,6 +54,20 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('eliminarEscritor/{id}','EscritorController@delete');
     Route::post('updateEscritor','EscritorController@update');
 
+    Route::get('altaTaller','TallerController@create');
+    Route::get('verTaller','TallerController@view');
+    Route::post('guardarTaller', 'TallerController@store');
+    Route::get('getDataTaller/{id}','TallerController@getData');
+    Route::get('eliminarTaller/{id}','TallerController@delete');
+    Route::post('updateTaller','TallerController@update');    
+
+    Route::get('altaReto','RetoController@create');
+    Route::get('verReto','RetoController@view');
+    Route::post('guardarReto', 'RetoController@store');
+    Route::get('getDataReto/{id}','RetoController@getData');
+    Route::get('eliminarReto/{id}','RetoController@delete');
+    Route::post('updateReto','RetoController@update');    
+
     Route::get('verPedidos','PedidosController@ver');
     Route::get('verPedido/{id}','PedidosController@verDetalle');
     Route::post('enviarPedido','PedidosController@enviarPedido');
