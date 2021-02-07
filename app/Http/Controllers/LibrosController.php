@@ -23,8 +23,14 @@ class LibrosController extends Controller
         $libros->Precio = $request->Precio;
         $libros->Stock = $request->Stock;
         
-        $sub = substr($request->Video,7);
-        $style = '<iframe style="position: absolute;top: 0;left: 0;bottom: 0;right: 0;width: 100%;height: 100%;border: none;" '.$sub;
+        $sub = strpos($request->Video, 'src');
+        $sub2 = $sub + 5;
+        $cadena = substr($request->Video,$sub2);
+        // dd($cadena);
+        $no = strpos($cadena,'"');
+        $style = substr($cadena,0,$no);
+        // dd($cadena2);
+        // $style = '<iframe style="position: absolute;top: 0;left: 0;bottom: 0;right: 0;width: 100%;height: 100%;border: none;" '.$sub;
         // dd($style);
         $libros->Video = $style;
         if($request->hasFile('Portada')){

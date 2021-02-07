@@ -15,7 +15,7 @@
               Crear taller
             </header>
             <div class="panel-body">
-                {!! Form::open(['url'=>'guardarTaller', 'class'=>'form-horizontal']) !!}
+                {!! Form::open(['url'=>'guardarTaller', 'class'=>'form-horizontal','enctype'=>'multipart/form-data']) !!}
                   <div class="form-group">
                     {!! Form::label('Taller','Nombre del Taller', ['class'=>'col-sm-2 control-label']) !!}
                     <div class="col-sm-10">
@@ -53,10 +53,17 @@
                     </div>
                   </div>
                   <div class="form-group">
+                    {!! Form::label('Imagen','Imagen', ['class'=>'col-sm-2 control-label']) !!}
+                      <div class="col-sm-10">
+                        {!! Form::file( 'Imagen', ['class'=>'form-control']) !!}
+                      </div>
+                  </div>
+                  <div class="form-group">
                     <div class="col-sm-10" align='right' >
                       {!! Form::submit('Guardar', ['class'=>'btn btn-default']) !!}
                     </div>
                   </div>
+                  
                 {!! Form::close() !!}
             </div>
           </section>

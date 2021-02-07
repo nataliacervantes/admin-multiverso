@@ -33,6 +33,12 @@
           </a>
         </li>
         <li class="sub-menu">
+          <a href="{{ url('verReto')}}" class="">
+              <i class="icon_ribbon_alt"></i>
+              <span>Retos</span>
+          </a>
+        </li>
+        <li class="sub-menu">
           <a href="{{ url('verPromocion')}}" class="">
               <i class="icon_creditcard"></i>
               <span>Promociones</span>
