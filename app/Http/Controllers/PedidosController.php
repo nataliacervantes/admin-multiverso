@@ -9,7 +9,7 @@ use App\Mail\EnviarBoleto;
 use App\Mail\ConfirmacionDeEnvio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-
+use PDF;
 class PedidosController extends Controller
 {
     public function ver(){
@@ -72,8 +72,24 @@ class PedidosController extends Controller
         }
 
         $pedido->EstatusPago = 'Pagado';
-        
+
         $pedido->save();
         return back();
+    }
+
+    public function viewBoletos(){
+        return view('boletos.view');
+    }
+    public function generarBoletos(Request $request){
+        // dd(gettype($request->otro));
+        $boletos = intval($request->Boletos);
+        $data=[];
+        for($i=0; $i<$boletos; $i++){
+            // dd($boletos);
+            array_push($data,'valor'.$i);
+        }
+        // dd($data);
+        $pdf = PDF::loadView('boletos.boleto',$data);
+        return $pdf->download('boletos.pdf');
     }
 }
