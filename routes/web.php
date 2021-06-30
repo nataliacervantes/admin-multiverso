@@ -75,7 +75,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('confirmarPago','PedidosController@confirmarPago');
 
     Route::get('viewBoletos','PedidosController@viewBoletos');
-    Route::post('generarBoletos','PedidosController@generarBoletos');
+    Route::post('generarBoleto','PedidosController@generarBoletos');
 });
 
 

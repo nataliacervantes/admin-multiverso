@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Pedidos;
 use App\BookPedido;
+use App\Eventos;
 use App\EventPedidos;
 use App\Libros;
 use App\Mail\EnviarBoleto;
@@ -52,7 +53,6 @@ class PedidosController extends Controller
         // }
         return back();
     }
-
     public function confirmarPago(Request $request){
         $pedido = Pedidos::where('id',$request->idPedido)->first();
         // dd($request->idPedido);
@@ -76,19 +76,18 @@ class PedidosController extends Controller
         $pedido->save();
         return back();
     }
-
     public function viewBoletos(){
-        return view('boletos.view');
+        $eventos = Eventos::all();
+        return view('boletos.imprimir')->with(['eventos'=>$eventos]);
     }
     public function generarBoletos(Request $request){
         // dd(gettype($request->otro));
-        $boletos = intval($request->Boletos);
-        $data=[];
-        for($i=0; $i<$boletos; $i++){
-            // dd($boletos);
-            array_push($data,'valor'.$i);
-        }
-        // dd($data);
+        $evento = Eventos::find($request->id)->toArray();
+
+        // dd($evento);
+        $data = [
+            'evento' => $evento,
+        ];
         $pdf = PDF::loadView('boletos.boleto',$data);
         return $pdf->download('boletos.pdf');
     }

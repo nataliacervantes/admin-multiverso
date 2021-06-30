@@ -18,9 +18,5 @@ class Eventos extends Model
         'Estado',
         'Ciudad',
         'Hora',
-        'Video',
-        'Imagen',
-        'Maps',
-        'Fanpage'
     ];
 }
