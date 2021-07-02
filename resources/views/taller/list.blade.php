@@ -115,6 +115,10 @@
                         {!! Form::label('Precio','Precio', ['class'=>'control-label']) !!}
                         {!! Form::text('Precio', '', ['class'=>'form-control']) !!}
                     </div>
+                    <div class="form-group">
+                        {!! Form::label('Imagen','Imagen', ['class'=>'control-label']) !!}
+                        {!! Form::file( 'Imagen', ['class'=>'form-control']) !!}
+                    </div>
                     <input type="hidden" name="id" id="id">
               </div>
               <div class="modal-footer">

@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 use App\Pedidos;
 use App\BookPedido;
+use App\Eventos;
 use App\EventPedidos;
 use App\Libros;
 use App\Mail\EnviarBoleto;
 use App\Mail\ConfirmacionDeEnvio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-
+use PDF;
 class PedidosController extends Controller
 {
     public function ver(){
@@ -52,7 +53,6 @@ class PedidosController extends Controller
         // }
         return back();
     }
-
     public function confirmarPago(Request $request){
         $pedido = Pedidos::where('id',$request->idPedido)->first();
         // dd($request->idPedido);
@@ -72,8 +72,23 @@ class PedidosController extends Controller
         }
 
         $pedido->EstatusPago = 'Pagado';
-        
+
         $pedido->save();
         return back();
+    }
+    public function viewBoletos(){
+        $eventos = Eventos::all();
+        return view('boletos.imprimir')->with(['eventos'=>$eventos]);
+    }
+    public function generarBoletos(Request $request){
+        // dd(gettype($request->otro));
+        $evento = Eventos::find($request->id)->toArray();
+
+        // dd($evento);
+        $data = [
+            'evento' => $evento,
+        ];
+        $pdf = PDF::loadView('boletos.boleto',$data);
+        return $pdf->download('boletos.pdf');
     }
 }

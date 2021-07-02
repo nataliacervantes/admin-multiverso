@@ -29,6 +29,14 @@ class TallerController extends Controller
         $taller->Precio = $request->Precio;
         $taller->Hora = $request->Hora;
 
+        if($request->hasFile('Imagen')){
+            $var = $request->file('Imagen');
+            $ext = $request->file('Imagen')->getClientOriginalExtension();
+            $name = $request->Titulo.'Imagen.'.$ext;
+            $var->move('img/Taller',$name);
+            $taller->Imagen = $name;
+        }
+
         $taller->save();
         
         $talleres = Taller::all();
@@ -54,6 +62,14 @@ class TallerController extends Controller
         $taller->Precio = $request->Precio;
         $taller->Hora = $request->Hora;
 
+        if($request->hasFile('Imagen')){
+            $var = $request->file('Imagen');
+            $ext = $request->file('Imagen')->getClientOriginalExtension();
+            $name = $request->Titulo.'Imagen.'.$ext;
+            $var->move('img/Taller',$name);
+            $taller->Imagen = $name;
+        }
+        
         $taller->save();
        
         return back();

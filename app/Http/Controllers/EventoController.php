@@ -8,7 +8,7 @@ class EventoController extends Controller
 {
     public function view(){
         $eventos = eventos::all();
-        return view('eventos.list', compact('eventos'));
+        return view('boletos.view', compact('eventos'));
     }
 
     public function create(){
@@ -19,7 +19,7 @@ class EventoController extends Controller
         $evento = Eventos::create($request->all());
 
         $eventos = Eventos::all();
-         return redirect('verEventos')->with(['eventos'=>$eventos]);
+         return redirect('viewBoletos')->with(['eventos'=>$eventos]);
     }
 
     public function delete($id){
