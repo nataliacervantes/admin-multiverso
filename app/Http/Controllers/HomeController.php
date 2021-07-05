@@ -21,6 +21,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function inicio(){
+        return view('auth.login');
+    }
     public function index()
     {
         return view('home');

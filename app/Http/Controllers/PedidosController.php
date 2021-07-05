@@ -17,7 +17,6 @@ class PedidosController extends Controller
         $pedidos = Pedidos::all();
         return view('pedidos.list',compact('pedidos'));
     }
-
     public function verDetalle($id){
         $pedido = Pedidos::where('id',$id)->first();
         $detalleLibros = BookPedido::where('pedidos_id',$id)->get();
@@ -29,7 +28,6 @@ class PedidosController extends Controller
         // dd($detalleLibros->books);
         return view('pedidos.detalle',compact('pedido','detalleLibros','detalleEventos','folio'));
     }
-
     public function enviarPedido(Request $request){
         $pedido = Pedidos::where('id',$request->id)->first();
 
@@ -76,19 +74,21 @@ class PedidosController extends Controller
         $pedido->save();
         return back();
     }
+
     public function viewBoletos(){
         $eventos = Eventos::all();
         return view('boletos.imprimir')->with(['eventos'=>$eventos]);
     }
     public function generarBoletos(Request $request){
         // dd(gettype($request->otro));
-        $evento = Eventos::find($request->id)->toArray();
-
+        $evento = Eventos::find($request->id);
+        $evento->Cupo = $evento->Cupo - 1;
+        $evento->save();
         // dd($evento);
         $data = [
             'evento' => $evento,
         ];
-        $pdf = PDF::loadView('boletos.boleto',$data);
+        $pdf = PDF::loadView('boletos.boleto',$data) ->setPaper('a4', 'landscape');
         return $pdf->download('boletos.pdf');
     }
 }

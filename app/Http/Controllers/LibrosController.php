@@ -15,14 +15,13 @@ class LibrosController extends Controller
 
     public function store(Request $request){
         $libros = new Libros();
-      
         // dd($request->Video);
         $libros->Titulo = $request->Titulo;
         $libros->autores_id = $request->Autor;
         $libros->Descripcion = $request->Descripcion;
         $libros->Precio = $request->Precio;
         $libros->Stock = $request->Stock;
-        
+
         $sub = strpos($request->Video, 'src');
         $sub2 = $sub + 5;
         $cadena = substr($request->Video,$sub2);
@@ -40,11 +39,11 @@ class LibrosController extends Controller
             $var->move('img/Portadas',$name);
             $libros->Portada = $name;
         }
-        
+
         $libros->save();
-       
+
         $libros = Libros::all();
-         
+
         return redirect('verLibros')->with(['libros'=>$libros]);
     }
 
@@ -80,7 +79,7 @@ class LibrosController extends Controller
     public function update(Request $request){
         $libros = Libros::find($request->id);
         // dd($request->Imagenes);
-       
+
         $libros->Titulo = $request->Titulo;
         $libros->autores_id = $request->Autor;
         $libros->Descripcion = $request->Descripcion;

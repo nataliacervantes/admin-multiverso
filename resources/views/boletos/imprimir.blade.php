@@ -12,10 +12,10 @@
                 <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading" >
-                            <div class="col-md-8" >
+                            <div class="col-md-8" style="margin-top: 15px;" >
                                 Generar Boletos
                             </div>
-                            <div class="col-md-4" >
+                            <div class="col-md-4" style="margin-top: 15px;">
                                 <a href="{{ url('verEventos')}}" type="button" class="btn btn-info">Crear evento</a>
                             </div>
                         </header>

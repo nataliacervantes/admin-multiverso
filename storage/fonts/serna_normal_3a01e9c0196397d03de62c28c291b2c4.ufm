@@ -1,0 +1,117 @@
+StartFontMetrics 4.1
+Notice Converted by PHP-font-lib
+Comment https://github.com/PhenX/php-font-lib
+EncodingScheme FontSpecific
+Copyright Johan Holmdahl/www.free-typewriter-fonts.com
+FontName 1942 report
+FontSubfamily 1942 report
+UniqueID pyrs: 1942 report: 
+FullName 1942 report
+Version 2001 Freeware
+PostScriptName 1942report
+Weight Medium
+ItalicAngle 0
+IsFixedPitch true
+UnderlineThickness 50
+UnderlinePosition -100
+FontHeightOffset 23
+Ascender 812
+Descender -197
+FontBBox -1 -197 654 812
+StartCharMetrics 95
+U 32 ; WX 648 ; N space ; G 1
+U 33 ; WX 648 ; N exclam ; G 2
+U 34 ; WX 648 ; N quotedbl ; G 3
+U 35 ; WX 651 ; N numbersign ; G 4
+U 37 ; WX 648 ; N percent ; G 5
+U 38 ; WX 648 ; N ampersand ; G 6
+U 39 ; WX 648 ; N quotesingle ; G 7
+U 40 ; WX 648 ; N parenleft ; G 8
+U 41 ; WX 651 ; N parenright ; G 9
+U 42 ; WX 648 ; N asterisk ; G 10
+U 43 ; WX 651 ; N plus ; G 11
+U 44 ; WX 651 ; N comma ; G 12
+U 45 ; WX 651 ; N minus ; G 13
+U 46 ; WX 651 ; N period ; G 14
+U 47 ; WX 651 ; N slash ; G 15
+U 48 ; WX 648 ; N zero ; G 16
+U 49 ; WX 648 ; N one ; G 17
+U 50 ; WX 651 ; N two ; G 18
+U 51 ; WX 651 ; N three ; G 19
+U 52 ; WX 648 ; N four ; G 20
+U 53 ; WX 648 ; N five ; G 21
+U 54 ; WX 651 ; N six ; G 22
+U 55 ; WX 648 ; N seven ; G 23
+U 56 ; WX 651 ; N eight ; G 24
+U 57 ; WX 651 ; N nine ; G 25
+U 58 ; WX 651 ; N colon ; G 26
+U 59 ; WX 648 ; N semicolon ; G 27
+U 60 ; WX 651 ; N less ; G 28
+U 61 ; WX 648 ; N equal ; G 29
+U 62 ; WX 646 ; N greater ; G 30
+U 63 ; WX 553 ; N question ; G 31
+U 65 ; WX 651 ; N A ; G 32
+U 66 ; WX 651 ; N B ; G 33
+U 67 ; WX 650 ; N C ; G 34
+U 68 ; WX 650 ; N D ; G 35
+U 69 ; WX 648 ; N E ; G 36
+U 70 ; WX 651 ; N F ; G 37
+U 71 ; WX 651 ; N G ; G 38
+U 72 ; WX 648 ; N H ; G 39
+U 73 ; WX 656 ; N I ; G 40
+U 74 ; WX 648 ; N J ; G 41
+U 75 ; WX 651 ; N K ; G 42
+U 76 ; WX 651 ; N L ; G 43
+U 77 ; WX 648 ; N M ; G 44
+U 78 ; WX 650 ; N N ; G 45
+U 79 ; WX 651 ; N O ; G 46
+U 80 ; WX 651 ; N P ; G 47
+U 81 ; WX 651 ; N Q ; G 48
+U 82 ; WX 651 ; N R ; G 49
+U 83 ; WX 653 ; N S ; G 50
+U 84 ; WX 651 ; N T ; G 51
+U 85 ; WX 651 ; N U ; G 52
+U 86 ; WX 651 ; N V ; G 53
+U 87 ; WX 651 ; N W ; G 54
+U 88 ; WX 651 ; N X ; G 55
+U 89 ; WX 651 ; N Y ; G 56
+U 90 ; WX 651 ; N Z ; G 57
+U 95 ; WX 648 ; N underscore ; G 58
+U 97 ; WX 648 ; N a ; G 59
+U 98 ; WX 651 ; N b ; G 60
+U 99 ; WX 648 ; N c ; G 61
+U 100 ; WX 648 ; N d ; G 62
+U 101 ; WX 651 ; N e ; G 63
+U 102 ; WX 651 ; N f ; G 64
+U 103 ; WX 651 ; N g ; G 65
+U 104 ; WX 648 ; N h ; G 66
+U 105 ; WX 651 ; N i ; G 67
+U 106 ; WX 651 ; N j ; G 68
+U 107 ; WX 651 ; N k ; G 69
+U 108 ; WX 651 ; N l ; G 70
+U 109 ; WX 651 ; N m ; G 71
+U 110 ; WX 651 ; N n ; G 72
+U 111 ; WX 653 ; N o ; G 73
+U 112 ; WX 653 ; N p ; G 74
+U 113 ; WX 651 ; N q ; G 75
+U 114 ; WX 651 ; N r ; G 76
+U 115 ; WX 650 ; N s ; G 77
+U 116 ; WX 651 ; N t ; G 78
+U 117 ; WX 653 ; N u ; G 79
+U 118 ; WX 651 ; N v ; G 80
+U 119 ; WX 651 ; N w ; G 81
+U 120 ; WX 651 ; N x ; G 82
+U 121 ; WX 651 ; N y ; G 83
+U 122 ; WX 651 ; N z ; G 84
+U 124 ; WX 104 ; N bar ; G 85
+U 168 ; WX 651 ; N dieresis ; G 86
+U 196 ; WX 651 ; N Adieresis ; G 87
+U 197 ; WX 651 ; N Aring ; G 88
+U 214 ; WX 648 ; N Odieresis ; G 89
+U 228 ; WX 651 ; N adieresis ; G 90
+U 229 ; WX 650 ; N aring ; G 91
+U 246 ; WX 651 ; N odieresis ; G 92
+U 57344 ; WX 0 ; N .null ; G 93
+U 57345 ; WX 500 ; N CR ; G 94
+EndCharMetrics
+EndFontMetrics
