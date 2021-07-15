@@ -74,6 +74,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('viewBoletos','PedidosController@viewBoletos');
     Route::post('generarBoleto','PedidosController@generarBoletos');
+    Route::get('confirmarAsistencia/{id}','PedidosController@confirmarAsistencia');
 });
 
 

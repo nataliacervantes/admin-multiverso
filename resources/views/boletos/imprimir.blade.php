@@ -19,6 +19,11 @@
                                 <a href="{{ url('verEventos')}}" type="button" class="btn btn-info">Crear evento</a>
                             </div>
                         </header>
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
                         <div class="panel-body">
                             @foreach ($eventos as $evento)
                                 {!! Form::open(['url'=>'generarBoleto']) !!}
@@ -27,9 +32,15 @@
                                             {!! Form::label('Evento', $evento->Evento) !!}
                                         </div>
                                         {!! Form::hidden('id', $evento->id) !!}
-                                        <div class="col-md-2">
-                                            <button class="btn btn-info">Generar Boleto</button>
-                                        </div>
+                                        @if ($evento->Cupo < 0)
+                                            <div class="col-md-2">
+                                                <button class="btn btn-info" disabled>Generar Boleto</button>
+                                            </div>
+                                        @else
+                                            <div class="col-md-2">
+                                                <button class="btn btn-info">Generar Boleto</button>
+                                            </div>
+                                        @endif
                                     </div>
                                 {!! Form::close() !!}
                             @endforeach
@@ -40,3 +51,4 @@
         </section>
     </section>
 @endsection
+

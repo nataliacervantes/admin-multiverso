@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Boletos;
 use App\Eventos;
 use Illuminate\Http\Request;
 
@@ -17,6 +19,14 @@ class EventoController extends Controller
 
     public function store(Request $request){
         $evento = Eventos::create($request->all());
+
+
+        for($i=0; $i < $evento->Cupo; $i++){
+            $boleto = new Boletos();
+            $boleto->eventos_id = $evento->id;
+            $boleto->Boleto = $i;
+            $boleto->save();
+        }
 
         $eventos = Eventos::all();
          return redirect('viewBoletos')->with(['eventos'=>$eventos]);

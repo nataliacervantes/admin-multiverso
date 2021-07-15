@@ -324,14 +324,14 @@ word-break: break-all;
             <!-- Body content -->
                 <tr>
                     <td class="content-cell">
-                        <p>{!! $msg['Nombre'] !!} te he enviado tu(s) libro(s)<br>
+                        <p>He recibido tu pago!<br>
                         </p>
 
-                        <p>Este es el número de guía con el que podrás rastrear tu pedido desde la paquetería de {{$msg['Paqueteria']}}
+                        <p>Ahora solo dame un momento para hacer el envío, estaré haciéndote llegar un correo
+                            con el nombre de la paquetería y el número de guía
                             </p>
-                        <h3>{{$msg['Guia']}}</h3>
 
-                        <p>Espero verte pronto por acá</p>
+                        <p>Gracias por alimentar a este pobre escritor </p>
                     </td>
                 </tr>
             </table>
