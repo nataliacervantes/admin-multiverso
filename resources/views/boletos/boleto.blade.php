@@ -76,7 +76,7 @@
                 </div>
             </div>
             <div class="codigo">
-                <img class="qr"  src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->generate('127.0.0.1:8001/confirmarAsistencia/'.$boleto['id'])) }} ">
+                <img class="qr"  src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->generate('https://admin.multiversolibreria.com/confirmarAsistencia/'.$boleto['id'])) }} ">
                 <label style="margin-left: 280px; margin-top: -230px; width: 190px; display: inline-block; transform: rotate(-90deg); position:absolute">BOLETO INDIVIDUAL</label>
             </div>
         </div>

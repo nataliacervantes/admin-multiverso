@@ -113,6 +113,5 @@ class PedidosController extends Controller
             $boleto->save();
             echo 'Hecho!';
         }
-
     }
 }
